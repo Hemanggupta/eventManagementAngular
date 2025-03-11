@@ -1,0 +1,15 @@
+.link {
+  color: blue;
+  // text-decoration: underline;
+  cursor: pointer;
+}
+
+.custom-error {
+  color: #f44336; /* Red color similar to mat-error */
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+  font-weight: 400;
+  position: absolute;
+  top: 52px;
+}

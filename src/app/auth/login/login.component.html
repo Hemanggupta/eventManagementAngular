@@ -1,0 +1,67 @@
+<div class="container-fluid bg-primary h-100 w-100 d-flex align-items-center justify-content-center">
+  <div class="card login-form-wrapper p-4">
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <h1 *ngIf="isLoginMode"><span class="header-underline">Lo</span>gin</h1>
+      <h1 *ngIf="!isLoginMode"><span class="header-underline">Re</span>gistration</h1>
+
+      <div class="d-flex flex-column">
+        <!-- Name Field -->
+        <mat-form-field class="example-full-width" appearance="outline" *ngIf="!isLoginMode">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput formControlName="userName" placeholder="Ex. pat@example.com" autocomplete="off" />
+          <mat-error *ngIf="authForm.get('userName')?.hasError('required')"> Name is required </mat-error>
+        </mat-form-field>
+
+        <!-- Email Field -->
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="userEmail" placeholder="Ex. pat@example.com" autocomplete="off" />
+          <mat-error *ngIf="authForm.get('userEmail')?.hasError('email') && !authForm.get('userEmail')?.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="authForm.get('userEmail')?.hasError('required')"> Email is required </mat-error>
+        </mat-form-field>
+
+        <!-- Password Field -->
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" [type]="hidePass ? 'password' : 'text'" autocomplete="off" />
+          <button mat-icon-button matSuffix (click)="hidePass = !hidePass" type="button">
+            <mat-icon>{{ hidePass ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="authForm.get('password')?.hasError('required')"> Password is required</mat-error>
+          <mat-error *ngIf="authForm.get('password')?.hasError('minlength')"> Password must be at least 6 characters long </mat-error>
+        </mat-form-field>
+
+        <!-- Confirm Password Field -->
+        <mat-form-field class="example-full-width" appearance="outline" *ngIf="!isLoginMode">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput formControlName="confirmPassword" [type]="hideConfirmPass ? 'password' : 'text'" autocomplete="off" />
+          <button mat-icon-button matSuffix (click)="hideConfirmPass = !hideConfirmPass" type="button">
+            <mat-icon>{{ hideConfirmPass ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="authForm.get('confirmPassword')?.hasError('required')"> Please confirm password </mat-error>
+          <span class="custom-error" *ngIf="passwordMismatch()"> Passwords do not match </span>
+        </mat-form-field>
+
+        <div style="color: red; font-size: 14px" *ngIf="authForm.get('password')?.hasError('invalidCredentials')">Invalid credentials!</div>
+
+        <div style="color: red; font-size: 14px" *ngIf="authForm.get('userEmail')?.hasError('emailExists')">Email already in use!</div>
+
+        <button
+          mat-raised-button
+          color="primary"
+          class="full-width mt-3"
+          type="submit"
+          [disabled]="authForm.invalid || (!isLoginMode && passwordMismatch())"
+        >
+          {{ isLoginMode ? 'Login Now' : 'Register Now' }}
+        </button>
+      </div>
+    </form>
+    <div class="signup-text mt-3">
+      {{ isLoginMode ? "Don't have an account?" : 'Already have an account?' }}
+      <span class="link" (click)="toggleMode()"> {{ isLoginMode ? 'Signup now' : 'Login now' }} </span>
+    </div>
+  </div>
+</div>
