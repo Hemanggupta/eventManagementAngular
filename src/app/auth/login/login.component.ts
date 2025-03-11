@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -15,7 +15,7 @@ import { LoginService } from './login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   authForm!: FormGroup;
   hidePass = true;
   hideConfirmPass = true;
@@ -62,7 +62,7 @@ export class LoginComponent {
   private login(formData: any): void {
     this.loginService.login(formData.userEmail, formData.password).subscribe(users => {
       if (users.length > 0) {
-        localStorage.setItem('user', JSON.stringify(users[0])); // Store user session
+        this.loginService.loginUser(users[0]); // Store user token
       } else {
         this.authForm.get('password')?.setErrors({ invalidCredentials: true });
       }

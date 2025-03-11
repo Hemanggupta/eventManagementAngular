@@ -26,3 +26,10 @@ Features
 ✅ Unique Email Validation – A user cannot register with an already registered email.
 ✅ Secure Login – Displays a generic "Invalid Credentials" error to prevent email enumeration.
 ✅ Form Validation – Ensures correct email format and minimum password length.
+
+## Guards
+
+The application restricts access based on user authentication status:
+
+🔒 Auth Guard (authGuard) – Ensures only authenticated users can access protected routes like /events. Unauthenticated users are redirected to the login page (/auth).
+🚫 Login Guard (loginGuard) – Prevents logged-in users from accessing the login page. If already logged in, users are redirected to /events.
