@@ -17,3 +17,12 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## JSON Server
 
 Run `json-server --watch db.json --port 3000` in root directory to run JSON server at 3000 port.
+
+## Login - Sign up
+
+This implementation allows users to register and log in while ensuring data validation, unique email registration, and secure authentication handling.
+
+Features
+✅ Unique Email Validation – A user cannot register with an already registered email.
+✅ Secure Login – Displays a generic "Invalid Credentials" error to prevent email enumeration.
+✅ Form Validation – Ensures correct email format and minimum password length.
