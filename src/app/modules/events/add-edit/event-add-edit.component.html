@@ -1,1 +1,57 @@
-<p>event-add-edit works!</p>
+<div class="card event-form-wrapper p-4">
+  <form [formGroup]="eventForm" (ngSubmit)="submitEvent()" autocomplete="off">
+    <h1>Add New Event</h1>
+
+    <div class="d-flex flex-column">
+      <!-- Event Name -->
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Event Name</mat-label>
+        <input type="text" matInput formControlName="name" placeholder="Enter event name" autocomplete="off" />
+        <mat-error *ngIf="eventForm.get('name')?.hasError('required')"> Event Name is required </mat-error>
+      </mat-form-field>
+
+      <!-- Date & Time -->
+      <mat-form-field appearance="outline">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateTime" />
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="eventForm.get('dateTime')?.hasError('required')"> Date is required </mat-error>
+      </mat-form-field>
+
+      <!-- Location -->
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location" placeholder="Enter event location" autocomplete="off" />
+        <mat-error *ngIf="eventForm.get('location')?.hasError('required')"> Location is required </mat-error>
+      </mat-form-field>
+
+      <!-- Description -->
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" placeholder="Enter event details"></textarea>
+      </mat-form-field>
+
+      <!-- Organizer Name -->
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Organizer Name</mat-label>
+        <input matInput formControlName="organizer" placeholder="Organizer's name" autocomplete="off" />
+        <mat-error *ngIf="eventForm.get('organizer')?.hasError('required')"> Organizer Name is required </mat-error>
+      </mat-form-field>
+
+      <!-- Event Type -->
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Event Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of eventTypes" [value]="type">{{ type }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="eventForm.get('type')?.hasError('required')"> Event Type is required </mat-error>
+      </mat-form-field>
+
+      <div class="action-btn">
+        <button mat-raised-button color="secondary" class="full-width mt-3" type="button" routerLink="/events">Cancel</button>
+        <button mat-raised-button color="primary" class="full-width mt-3" type="submit" [disabled]="eventForm.invalid">Create</button>
+      </div>
+    </div>
+  </form>
+</div>

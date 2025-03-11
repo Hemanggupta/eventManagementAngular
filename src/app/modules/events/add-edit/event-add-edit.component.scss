@@ -1,0 +1,17 @@
+.header-underline {
+  text-decoration: underline;
+  text-decoration-color: blue;
+}
+
+.event-form-wrapper {
+  max-width: 800px;
+  width: 80vw;
+}
+.action-btn {
+  display: flex;
+
+  button {
+    width: 100%;
+    margin: 0 10px;
+  }
+}

@@ -6,5 +6,151 @@
       "userEmail": "hem@gmail.com",
       "password": "asdasd"
     }
+  ],
+  "events": [
+    {
+      "id": "a8c0",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c1",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c2",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c3",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c4",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c5",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c6",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c7",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c8",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c9",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c10",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c11",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c12",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c13",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c14",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    },
+    {
+      "id": "a8c15",
+      "name": "Registration",
+      "dateTime": "2025-03-12",
+      "location": "Hyderabad",
+      "description": "Hello",
+      "organizer": "Hemang",
+      "type": "Workshop"
+    }
   ]
 }

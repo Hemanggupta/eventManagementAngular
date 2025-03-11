@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { loginGuard } from './guards/login.guard';
+import { AuthorizedLayoutComponent } from './pages/authorized-layout/authorized-layout.component';
 
 const routes: Routes = [
   {
@@ -16,8 +17,26 @@ const routes: Routes = [
   },
   {
     path: 'events',
-    loadComponent: () => import('./pages/authorized-layout/authorized-layout.component').then(m => m.AuthorizedLayoutComponent),
-    canActivate: [authGuard]
+    component: AuthorizedLayoutComponent,
+    canActivate: [authGuard],
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./modules/events/listing/event-listing.component').then(m => m.EventListingComponent)
+      },
+      {
+        path: 'add',
+        loadComponent: () => import('./modules/events/add-edit/event-add-edit.component').then(m => m.EventAddEditComponent)
+      },
+      {
+        path: 'edit/:id',
+        loadComponent: () => import('./modules/events/add-edit/event-add-edit.component').then(m => m.EventAddEditComponent)
+      }
+    ]
+  },
+  {
+    path: '**',
+    redirectTo: 'auth'
   }
 ];
 
