@@ -18,6 +18,10 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `json-server --watch db.json --port 3000` in root directory to run JSON server at 3000 port.
 
+## Formatting
+
+Used Prettier Vs code extension
+
 ## Login - Sign up
 
 This implementation allows users to register and log in while ensuring data validation, unique email registration, and secure authentication handling.
