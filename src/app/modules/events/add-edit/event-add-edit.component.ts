@@ -66,6 +66,9 @@ export class EventAddEditComponent implements OnInit {
     this.eventService.getEvent(eventId).subscribe({
       next: response => {
         this.eventForm.patchValue(response);
+        if (this.isViewMode) {
+          this.eventForm.disable();
+        }
       },
       error: error => {
         console.error('Error fetching event:', error);
@@ -80,6 +83,7 @@ export class EventAddEditComponent implements OnInit {
       payload.dateTime = payload.dateTime.toISOString().split('T')[0];
       this.eventService.addEvent(this.eventForm.value).subscribe({
         next: response => {
+          this.eventService.setPageState(0, 5); // index and size
           alert('Event added successfully!');
           this.router.navigate(['/events']);
         },

@@ -12,3 +12,13 @@
     padding: 30px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .full-view-port {
+    .dynamic-components {
+      padding: 10px;
+      max-height: calc(100svh - 56px); // Height of header in mobile view
+      overflow: hidden;
+    }
+  }
+}

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { loginGuard } from './guards/login.guard';
-import { AuthorizedLayoutComponent } from './pages/authorized-layout/authorized-layout.component';
+import { AuthorizedLayoutComponent } from './layout/authorized-layout/authorized-layout.component';
 
 const routes: Routes = [
   {
@@ -30,6 +30,10 @@ const routes: Routes = [
       },
       {
         path: 'edit/:id',
+        loadComponent: () => import('./modules/events/add-edit/event-add-edit.component').then(m => m.EventAddEditComponent)
+      },
+      {
+        path: 'view/:id',
         loadComponent: () => import('./modules/events/add-edit/event-add-edit.component').then(m => m.EventAddEditComponent)
       }
     ]

@@ -28,14 +28,43 @@ export class EventListingComponent {
   }
 
   ngAfterViewInit() {
+    this.restorePaginator();
     this.dataSource.paginator = this.paginator;
+  }
+
+  private restorePaginator() {
+    setTimeout(() => {
+      if (this.paginator) {
+        this.paginator.pageIndex = this.eventService.getPageIndex();
+        this.paginator.pageSize = this.eventService.getPageSize();
+      }
+    });
+  }
+
+  onPageChange() {
+    if (this.paginator) {
+      this.eventService.setPageState(this.paginator.pageIndex, this.paginator.pageSize);
+    }
   }
 
   loadEvents() {
     this.eventService.getAllEvents().subscribe({
       next: events => {
+        events.forEach(event => {
+          event.dateTime = event?.dateTime?.split('T')[0];
+        });
+
         this.dataSource.data = events;
-        this.dataSource.paginator = this.paginator;
+
+        setTimeout(() => {
+          if (this.paginator) {
+            this.paginator.pageIndex = this.eventService.getPageIndex();
+            this.paginator.pageSize = this.eventService.getPageSize();
+            this.dataSource.paginator = this.paginator;
+
+            this.paginator._changePageSize(this.paginator.pageSize);
+          }
+        });
       },
       error: err => console.error('Error fetching events:', err)
     });
@@ -43,6 +72,10 @@ export class EventListingComponent {
 
   editEvent(event: EventElement) {
     this.router.navigate(['/events/edit', event.id]);
+  }
+
+  viewEvent(event: EventElement) {
+    this.router.navigate(['/events/view', event.id]);
   }
 
   deleteEvent(event: EventElement): void {

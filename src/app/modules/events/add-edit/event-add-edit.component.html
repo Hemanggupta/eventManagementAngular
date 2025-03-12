@@ -1,6 +1,6 @@
 <div class="card event-form-wrapper p-4">
   <form [formGroup]="eventForm" (ngSubmit)="submitEvent()" autocomplete="off">
-    <h1>Add New Event</h1>
+    <h1>{{ isViewMode ? 'View' : isEditMode ? 'Edit' : 'Add' }} Event</h1>
 
     <div class="d-flex flex-column">
       <!-- Event Name -->
@@ -50,7 +50,9 @@
 
       <div class="action-btn">
         <button mat-raised-button color="secondary" class="full-width mt-3" type="button" routerLink="/events">Cancel</button>
-        <button mat-raised-button color="primary" class="full-width mt-3" type="submit" [disabled]="eventForm.invalid">Create</button>
+        <button *ngIf="!isViewMode" mat-raised-button color="primary" class="full-width mt-3" type="submit" [disabled]="eventForm.invalid">
+          {{ isEditMode ? 'Update' : 'Create' }}
+        </button>
       </div>
     </div>
   </form>

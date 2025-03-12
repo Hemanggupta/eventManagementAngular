@@ -3,15 +3,16 @@
   padding: 20px;
   flex-direction: column;
   justify-content: center;
-  padding: 30px;
   max-width: 800px;
   width: 80vw;
+  max-height: 100%;
+  height: min-content;
 
   .add-new {
     margin-left: auto;
   }
   .table-wrapper {
-    overflow-x: auto;
+    overflow: auto;
     tr,
     td {
       white-space: nowrap;
@@ -22,5 +23,24 @@
 ::ng-deep {
   .mat-elevation-z8 {
     box-shadow: none;
+  }
+}
+
+@media (max-width: 768px) {
+  ::ng-deep .mat-mdc-paginator-container {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+
+    .mat-mdc-paginator-range-actions {
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .mat-mdc-paginator-range-label {
+        width: 100%;
+        text-align: center;
+        padding-top: 10px;
+      }
+    }
   }
 }

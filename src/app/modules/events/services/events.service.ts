@@ -8,6 +8,8 @@ import { EventElement } from '../models/events';
 })
 export class EventsService {
   private apiUrl = 'http://localhost:3000/events';
+  private pageIndex: number = 0;
+  private pageSize: number = 5;
   constructor(private readonly http: HttpClient) {}
 
   addEvent(eventData: any): Observable<any> {
@@ -31,5 +33,18 @@ export class EventsService {
   getEvent(eventId: string): Observable<EventElement> {
     const url = `${this.apiUrl}/${eventId}`;
     return this.http.get<EventElement>(url);
+  }
+
+  setPageState(index: number, size: number): void {
+    this.pageIndex = index;
+    this.pageSize = size;
+  }
+
+  getPageIndex(): number {
+    return this.pageIndex;
+  }
+
+  getPageSize(): number {
+    return this.pageSize;
   }
 }
