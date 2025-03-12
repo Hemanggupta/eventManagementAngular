@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Router, RouterModule } from '@angular/router';
+import { EventElementParam } from '../models/events';
 import { EventsService } from '../services/events.service';
 
 @Component({
@@ -79,8 +80,8 @@ export class EventAddEditComponent implements OnInit {
 
   submitEvent() {
     if (this.eventForm.valid) {
-      const payload = this.eventForm.value;
-      payload.dateTime = payload.dateTime.toISOString().split('T')[0];
+      const payload: EventElementParam = this.eventForm.value;
+      payload.dateTime = payload.dateTime.split('T')[0];
       this.eventService.addEvent(this.eventForm.value).subscribe({
         next: response => {
           this.eventService.setPageState(0, 5); // index and size

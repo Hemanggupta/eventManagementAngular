@@ -37,3 +37,18 @@ The application restricts access based on user authentication status:
 
 🔒 Auth Guard (authGuard) – Ensures only authenticated users can access protected routes like /events. Unauthenticated users are redirected to the login page (/auth).
 🚫 Login Guard (loginGuard) – Prevents logged-in users from accessing the login page. If already logged in, users are redirected to /events.
+
+## Event Management
+
+The event listing page (/events) allows users to view, edit, and delete events with pagination persistence.
+
+Event Listing Features
+✅ Pagination Persistence – Maintains the current page and items per page when navigating away and back.
+✅ Event Management Actions – Users can view, edit, and delete events.
+✅ Date Formatting – Displays event dates in a user-friendly format.
+
+Technical Details
+
+Uses Angular Material Table (MatTableDataSource) for listing events.
+Stores paginator state (pageIndex, pageSize) in a service to persist pagination state across navigations.
+Uses MatPaginator with \_changePageSize() to maintain pagination settings when returning to the event list.

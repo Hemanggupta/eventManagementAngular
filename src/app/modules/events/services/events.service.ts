@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EventElement } from '../models/events';
+import { EventElement, EventElementParam } from '../models/events';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class EventsService {
   private pageSize: number = 5;
   constructor(private readonly http: HttpClient) {}
 
-  addEvent(eventData: any): Observable<any> {
+  addEvent(eventData: EventElementParam): Observable<any> {
     return this.http.post<any>(this.apiUrl, eventData);
   }
 
@@ -20,12 +20,12 @@ export class EventsService {
     return this.http.get<EventElement[]>(this.apiUrl);
   }
 
-  deleteEvent(eventId: number): Observable<any> {
+  deleteEvent(eventId: string): Observable<any> {
     const url = `${this.apiUrl}/${eventId}`;
     return this.http.delete<any>(url);
   }
 
-  editEvent(eventId: number, eventData: any): Observable<any> {
+  editEvent(eventId: string, eventData: EventElement): Observable<any> {
     const url = `${this.apiUrl}/${eventId}`;
     return this.http.put<any>(url, eventData);
   }
